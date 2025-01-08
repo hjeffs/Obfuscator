@@ -9,7 +9,7 @@ pip install git+https://github.com/hjeffs/Obfuscator.git
 ```
 
 ## Usage
-2. import and invoke the function
+2. Import and invoke the function
 
 ```
 from obfuscator import functions
