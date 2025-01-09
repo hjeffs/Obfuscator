@@ -1,0 +1,12 @@
+[
+  {"student_id": 1001, "name": "John Doe", "course": "Computer Science", "cohort": "2023-2024", "graduation_date": "2025-06-15", "email_address": "john.doe@example.com"},
+  {"student_id": 1002, "name": "Jane Smith", "course": "Business Administration", "cohort": "2022-2023", "graduation_date": "2024-05-20", "email_address": "jane.smith@example.com"},
+  {"student_id": 1003, "name": "Alex Johnson", "course": "Mechanical Engineering", "cohort": "2023-2024", "graduation_date": "2025-07-10", "email_address": "alex.johnson@example.com"},
+  {"student_id": 1004, "name": "Emily Davis", "course": "Graphic Design", "cohort": "2022-2023", "graduation_date": "2024-08-25", "email_address": "emily.davis@example.com"},
+  {"student_id": 1005, "name": "Michael Brown", "course": "Nursing", "cohort": "2023-2024", "graduation_date": "2025-09-30", "email_address": "michael.brown@example.com"},
+  {"student_id": 1006, "name": "Sarah Wilson", "course": "Law", "cohort": "2022-2023", "graduation_date": "2024-11-15", "email_address": "sarah.wilson@example.com"},
+  {"student_id": 1007, "name": "David Lee", "course": "Physics", "cohort": "2023-2024", "graduation_date": "2025-04-05", "email_address": "david.lee@example.com"},
+  {"student_id": 1008, "name": "Emma Garcia", "course": "Psychology", "cohort": "2022-2023", "graduation_date": "2024-12-22", "email_address": "emma.garcia@example.com"},
+  {"student_id": 1009, "name": "Chris Martinez", "course": "Chemistry", "cohort": "2023-2024", "graduation_date": "2025-03-18", "email_address": "chris.martinez@example.com"},
+  {"student_id": 1010, "name": "Olivia Hernandez", "course": "Architecture", "cohort": "2022-2023", "graduation_date": "2024-06-01", "email_address": "olivia.hernandez@example.com"}
+]
