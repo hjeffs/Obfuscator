@@ -1,3 +1,4 @@
+import os
 import csv
 
 def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
@@ -6,6 +7,7 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
     with open(file_to_obfuscate) as input:
         reader = csv.DictReader(input)
         fields = reader.fieldnames
+        
         print ("Starting obfuscation...") # Debug statement
         print ("All fields:", fields)
         print ("Fields to be Obfuscated:", pii_fields)
@@ -18,11 +20,12 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
                 row[field] = '***' # Obfuscated value from brief
           obfuscated_data.append(row)
         
-        print(obfuscated_data)
+        print("Obfuscated Data:", obfuscated_data)
       
     with open(obfuscated_file, mode='w', newline='') as output:
         writer = csv.DictWriter(output, fieldnames=fields)
-        writer.writeheader()
+        if fields != None:        # Empty file check
+          writer.writeheader()
         writer.writerows(obfuscated_data)
 
   except FileNotFoundError:
