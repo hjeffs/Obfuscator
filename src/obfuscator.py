@@ -28,7 +28,8 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
   except FileNotFoundError:
     raise FileNotFoundError("Error: Input file not found.")
   except Exception as e:
-    raise e(f"Error: {e}")
-
+    print(f'Error: {e}')
+    raise e
+  
 if __name__ == "__main__":
   obfuscate('./files/testdata_10students.csv', ['name', 'email_address'], './files/obfuscated_file.csv')

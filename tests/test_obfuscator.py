@@ -4,9 +4,9 @@ from src.obfuscator import obfuscate
 
 def test_obfuscate():
     # Arrange
-    input_file = 'files\testdata_1student.csv'
+    input_file = './files/testdata_10students.csv'
     pii_fields = ['name', 'email_address']
-    output_file = 'files\obfuscated_file.csv'
+    output_file = './files/obfuscated_file.csv'
 
     # Act
     obfuscate(input_file, pii_fields, output_file)
@@ -23,7 +23,7 @@ def test_obfuscate_no_file():
     # Arrange
     input_file = 'non_existent_file.csv'
     pii_fields = ['name', 'email_address']
-    output_file = 'files\obfuscated_file.csv'
+    output_file = './files/obfuscated_file.csv'
 
     # Act & Assert
     with pytest.raises(FileNotFoundError):
