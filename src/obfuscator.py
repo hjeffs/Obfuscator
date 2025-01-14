@@ -26,7 +26,7 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
         writer.writerows(obfuscated_data)
 
   except FileNotFoundError:
-    print("Error: file not found.")
+    raise FileNotFoundError("Error: Input file not found.")
   except Exception as e:
     print(f"An error occurred: {e}")
 
