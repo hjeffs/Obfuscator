@@ -1,6 +1,7 @@
 import csv
 
 def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
+  # print(file_to_obfuscate, '<<< Get input file type from here?')
   try:
     with open(file_to_obfuscate) as input:
         reader = csv.DictReader(input)
@@ -14,10 +15,8 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
         for row in reader:
           for field in pii_fields:
               if field in row:
-                # print(field, '<<< field')
                 row[field] = '***' # Obfuscated value from brief
           obfuscated_data.append(row)
-          # print(row)
         
         print(obfuscated_data)
       
@@ -32,4 +31,4 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
     print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-  obfuscate('./files/testdata_1student.csv', ['name', 'email_address', 'cohort'], './files/obfuscated_file.csv')
+  obfuscate('./files/testdata_10students.csv', ['name', 'email_address'], './files/obfuscated_file.csv')
