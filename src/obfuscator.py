@@ -2,7 +2,10 @@ import os
 import csv
 
 def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
-  # print(file_to_obfuscate, '<<< Get input file type from here?')
+  file_name, file_extension = os.path.splitext(file_to_obfuscate)
+  print ("File name:", file_name)
+  print ("File Extension:", file_extension)
+
   try:
     with open(file_to_obfuscate) as input:
         reader = csv.DictReader(input)
