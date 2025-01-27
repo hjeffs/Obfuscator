@@ -8,7 +8,7 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
 
   try:
     with open(file_to_obfuscate) as input:
-        reader = csv.DictReader(input)
+        reader = csv.DictReader(input)    # Reads csv into DataFrame
         fields = reader.fieldnames
         
         print ("Starting obfuscation...") # Debug statement
@@ -30,12 +30,14 @@ def obfuscate(file_to_obfuscate, pii_fields, obfuscated_file):
         if fields != None:        # Empty file check
           writer.writeheader()
         writer.writerows(obfuscated_data)
+    
+    return obfuscated_file
 
   except FileNotFoundError:
     raise FileNotFoundError("Error: Input file not found.")
   except Exception as e:
     print(f'Error: {e}')
     raise e
-  
+
 if __name__ == "__main__":
   obfuscate('./files/testdata_10students.csv', ['name', 'email_address'], './files/obfuscated_file.csv')
