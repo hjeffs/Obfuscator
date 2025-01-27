@@ -1,5 +1,5 @@
 def obfuscate_data(dataframe, fields):
-    print(dataframe)
+    print(dataframe, '<<< DATA')
     for field in fields:
         if field in dataframe.columns:
             dataframe[field] = '***' # Obfuscated value from brief
