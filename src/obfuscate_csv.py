@@ -1,11 +1,21 @@
 import pandas as pd
+import os
 from io import StringIO
 from obfuscate_data import obfuscate_data
 
 def obfuscate_csv(file_to_obfuscate, pii_fields):
     try:
+        file_name, file_extension = os.path.splitext(file_to_obfuscate)
+        #print("File name:", file_name)
+        #print("File Extension:", file_extension)
+
         # Load csv into dataframe
+        print(f'File type: {file_extension}')
         dataframe = pd.read_csv(file_to_obfuscate)
+
+        if file_extension == '.json':
+            print(f'File type: {file_extension}')
+            dataframe = pd.read_json(file_to_obfuscate)
 
         # Filter fields for whitespace / empty strings
         pii_fields = [field for field in pii_fields if field.strip()]
@@ -20,7 +30,7 @@ def obfuscate_csv(file_to_obfuscate, pii_fields):
 
         # Obfuscate pii_fields
         dataframe = obfuscate_data(dataframe, pii_fields)
-        print(dataframe, '<<< CSV')
+        print(dataframe, '<<< CSV (OUTPUT)')
 
         # Save the obfuscated dataframe to a new csv file using StringIO
         output_csv = StringIO()                         # create file object
