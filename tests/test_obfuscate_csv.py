@@ -2,7 +2,12 @@ import pytest
 import pandas as pd
 from src.obfuscate_csv import obfuscate_csv
 
-# src. needs to be added to from obfuscate_data to run tests
+""" 
+from obfuscate_data import obfuscate_data
+replaced with
+from src.obfuscate_data import obfuscate_data 
+in obfuscate_csv.py to run test suite
+"""
 
 def test_obfuscate_csv_no_file():
     # Arrange

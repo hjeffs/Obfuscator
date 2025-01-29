@@ -13,8 +13,8 @@ def obfuscate_csv(file_to_obfuscate, pii_fields):
         print(f'File type: {file_extension}')
         dataframe = pd.read_csv(file_to_obfuscate)
 
+        # method works for json too
         if file_extension == '.json':
-            print(f'File type: {file_extension}')
             dataframe = pd.read_json(file_to_obfuscate)
 
         # Filter fields for whitespace / empty strings
