@@ -5,13 +5,15 @@ from obfuscate_data import obfuscate_data
 
 def obfuscate_csv(file_to_obfuscate, pii_fields):
     try:
+        open('./files/obfuscated_file.csv', 'w').close() # empty file
         file_name, file_extension = os.path.splitext(file_to_obfuscate)
-        #print("File name:", file_name)
-        #print("File Extension:", file_extension)
+        print(f'File name: {file_name}', '<<< obs_csv')
+        print(f'File type: {file_extension}', '<<< obs_csv')
 
         # Load csv into dataframe
-        print(f'File type: {file_extension}')
-        dataframe = pd.read_csv(file_to_obfuscate)
+        # index_col= 0 ignores first column 
+        # caused problem obfuscating student_id
+        dataframe = pd.read_csv(file_to_obfuscate, index_col=0) 
 
         # method works for json too
         if file_extension == '.json':
@@ -24,6 +26,7 @@ def obfuscate_csv(file_to_obfuscate, pii_fields):
         if not pii_fields:      
             output_csv = StringIO()  
             dataframe.to_csv(output_csv, index=False)  
+            dataframe.to_csv('./files/obfuscated_file.csv', index='False')    
             output_csv.seek(0)  
             return output_csv
 
@@ -35,6 +38,7 @@ def obfuscate_csv(file_to_obfuscate, pii_fields):
         # Save the obfuscated dataframe to a new csv file using StringIO
         output_csv = StringIO()                         # create file object
         dataframe.to_csv(output_csv, index='False')     # write output
+        dataframe.to_csv('./files/obfuscated_file.csv', index='False')     
         output_csv.seek(0)                              # set cursor at index 0
 
         return output_csv
@@ -45,4 +49,4 @@ def obfuscate_csv(file_to_obfuscate, pii_fields):
         raise e
     
 if __name__ == "__main__":
-  obfuscate_csv('./files/testdata_10students.csv', ['name', 'email_address'])
+    obfuscate_csv('./files/testdata_10students.csv', ['name', 'email_address'])

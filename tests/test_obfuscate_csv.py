@@ -40,11 +40,16 @@ def test_obfuscate_csv_no_field():
     # Arrange 
     input_file = './files/testdata_10students.csv'
     pii_fields = []
+    output_file = './files/obfuscated_file.csv'
 
     # Act 
-    output_csv = obfuscate_csv(input_file, pii_fields)          
-    result_df = pd.read_csv(output_csv)
+    obfuscate_csv(input_file, pii_fields)   
+
     expected_df = pd.read_csv(input_file)
+    print(expected_df, '<<< EXPECTED')
+
+    result_df = pd.read_csv(output_file)
+    print(result_df, '<<< RESULT')
 
     # Assert
     pd.testing.assert_frame_equal(result_df, expected_df)
@@ -53,11 +58,16 @@ def test_obfuscate_csv_empty_field():
     # Arrange 
     input_file = './files/testdata_10students.csv'
     pii_fields = ['']
+    output_file = './files/obfuscated_file.csv'
 
     # Act 
-    output_csv = obfuscate_csv(input_file, pii_fields)          
-    result_df = pd.read_csv(output_csv)
+    obfuscate_csv(input_file, pii_fields)
+
     expected_df = pd.read_csv(input_file)
+    print(expected_df, '<<< EXPECTED')
+
+    result_df = pd.read_csv(output_file)
+    print(result_df, '<<< RESULT')
 
     # Assert
     pd.testing.assert_frame_equal(result_df, expected_df)

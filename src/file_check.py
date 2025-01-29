@@ -8,8 +8,8 @@ def file_check(file_to_obfuscate, pii_fields):
     if file_extension == '.csv':
        output_file = obfuscate_csv(file_to_obfuscate, pii_fields)
 
-    if file_extension == '.json':
-       output_file = obfuscate_csv(file_to_obfuscate, pii_fields)
+    #if file_extension == '.json':
+       #output_file = obfuscate_csv(file_to_obfuscate, pii_fields)
        #output_file = obfuscate_json(file_to_obfuscate, pii_fields)
 
     #if file_extension == '.parquet':
@@ -18,4 +18,4 @@ def file_check(file_to_obfuscate, pii_fields):
     return output_file
 
 if __name__ == "__main__":
-  file_check('./files/testdata_10students.json', ['name', 'email_address'])
+  file_check('./files/testdata_10students.csv', ['name', 'email_address'])
