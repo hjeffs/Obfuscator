@@ -18,4 +18,4 @@ def file_check(file_to_obfuscate, pii_fields):
     return output_file
 
 if __name__ == "__main__":
-  file_check('./files/testdata_10students.csv', ['name', 'email_address'])
+  file_check('./files/testdata_10students.csv', ['student_id', 'email_address'])
