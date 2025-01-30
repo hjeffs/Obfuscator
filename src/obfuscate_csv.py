@@ -5,7 +5,7 @@ from obfuscate_data import obfuscate_data
 
 def obfuscate_csv(file_content, pii_fields):
     try:
-        print("in OBFUSCATE")
+        print("in OBFUSCATE CSV")
         #open('./files/obfuscated_file.csv', 'w').close() # empty file
         #file_name, file_extension = os.path.splitext(file_to_obfuscate)
         #print(f'File name: {file_name}', '<<< obs_csv')
@@ -16,7 +16,6 @@ def obfuscate_csv(file_content, pii_fields):
         dataframe = pd.read_csv(temporary_file)
         #dataframe = pd.read_csv(file_to_obfuscate)
         
-
         # Filter fields for whitespace / empty strings
         pii_fields = [field for field in pii_fields if field.strip()]
 

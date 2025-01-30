@@ -3,6 +3,8 @@ from obfuscate_csv import obfuscate_csv
 
 def file_check(file_to_obfuscate, pii_fields, file_extension):
     print("in FILE CHECK")
+    # 1 check that it exists
+    # 2 
     #file_name, file_extension = os.path.splitext(file_to_obfuscate)
     #print(f'File name: {file_name}', '<<< FILE CHECK')
     print(f'File type: {file_extension}', '<<< FILE CHECK')

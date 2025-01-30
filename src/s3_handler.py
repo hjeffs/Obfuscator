@@ -1,5 +1,6 @@
 import boto3
 from file_check import file_check
+from obfuscate import obfuscate
 from botocore import UNSIGNED
 
 s3 = boto3.client('s3', config=boto3.session.Config(signature_version=UNSIGNED))
@@ -34,4 +35,4 @@ def s3_handler(s3_location, pii_fields):
         raise e
     
 if __name__ == '__main__':
-    s3_handler('s3://xno-bazaar-listing-images/testdata_10students.csv', ['name', 'email_address'])
+    s3_handler('s3://xno-bazaar-listing-images/testdata_10students.csv', ['BLA', 'email_address'])
