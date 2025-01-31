@@ -38,6 +38,46 @@ exact copy of the input file but with the sensitive data replaced with obfuscate
 
 Manipulate this byte-stream to however you require.
 
+## Invocation from Command Line
+Create a test script for Command Line Invocation, the script should look like this:
+
+```
+from obfuscator import obfuscate
+import argparse
+
+# Create the argument parser
+parser = argparse.ArgumentParser(description="Process S3 location and PII fields.")
+
+# Add arguments
+parser.add_argument("s3_location", type=str, help="S3 bucket location")
+parser.add_argument("pii_fields", nargs="+", help="List of PII fields to process")
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Command line arguments set as s3_location and pii_fields
+s3_location = args.s3_location
+pii_fields = args.pii_fields
+
+# Print values (for debugging purposes)
+print(f"S3 Location: {s3_location}")
+print(f"PII Fields: {pii_fields}")
+
+bytestream = obfuscate(s3_location, pii_fields)
+print(bytestream.getvalue())
+```
+Navigate to the script in your command line and run through Installation:
+```
+pip install git+https://github.com/hjeffs/Obfuscator.git
+```
+Once obfuscator is installed from the repo:
+```
+python "c:/Dev/myscripts/test.py" my-s3-bucket/path field1 field2 field3
+```
+Note the pii_fields (field1 field2 field3) need to be space-separated values and choose your correct file path inside the string. "c:/Dev/myscripts/test.py" is an example. s3_location is the 3rd command line argument and does not need to be string. 
+
+Users should recieve feedback in the command line to confirm success or diagnose errors.
+
 ## Additional Information
 
 This portfolio project was created to spec for [Tech Returners](https://www.techreturners.com/). 
