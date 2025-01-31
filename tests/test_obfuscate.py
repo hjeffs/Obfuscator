@@ -53,3 +53,9 @@ def test_pep8_compliance():
     import subprocess
     result = subprocess.run(["flake8", "obfuscator/obfuscate.py"], capture_output=True, text=True)
     assert result.returncode == 0, f"PEP-8 violations:\n{result.stdout}"
+
+# Security vulnerabilities test
+def test_security_vulnerabilities():
+    import subprocess
+    result = subprocess.run(["bandit", "-r", "obfuscator/obfuscate.py"], capture_output=True, text=True)
+    assert "No issues identified." in result.stdout or result.returncode == 0, f"Security issues found:\n{result.stdout}"
