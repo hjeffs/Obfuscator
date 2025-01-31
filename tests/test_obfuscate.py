@@ -38,3 +38,8 @@ def test_obfuscate_empty_pii_fields(mock_s3_parser, mock_read_file, mock_obfusca
     byte_stream = obfuscate("s3://bucket/file.csv", [" ", ""])
     assert isinstance(byte_stream, io.BytesIO)
 
+def test_obfuscate_file_not_found():
+    with patch("obfuscate.s3_parser", side_effect=FileNotFoundError):
+        with pytest.raises(FileNotFoundError):
+            obfuscate("s3://bucket/missing.csv", ["col1"])
+
