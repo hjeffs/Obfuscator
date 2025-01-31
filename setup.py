@@ -9,7 +9,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/hjeffs/Obfuscator",  # GitHub or website URL
-    packages=find_packages(),  # Automatically find package directories
+    packages=["obfuscator"],
     install_requires=[
         # List dependencies here
         # pandas, boto3
