@@ -1,0 +1,1 @@
+from obfuscate import obfuscate  # Import functions for easier access

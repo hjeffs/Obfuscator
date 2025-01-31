@@ -10,14 +10,14 @@ def write_to_bytestream(dataframe, file_extension):
     if file_extension == 'csv':
         # False for index and index_label to make the same csv shape     
         dataframe.to_csv(byte_stream, index=False, index_label=False)
-        dataframe.to_csv('./files/s3_test.csv', index=False, index_label=False) # test
+        # dataframe.to_csv('./files/s3_test.csv', index=False, index_label=False) 
     elif file_extension == 'json':
         # orient="records" outputs a list of dictionaries, same json shape 
         dataframe.to_json(byte_stream, orient="records") 
-        dataframe.to_json('./files/s3_test.json', orient="records", indent=2) # test
+        # dataframe.to_json('./files/s3_test.json', orient="records", indent=2) 
     elif file_extension == 'parquet':
         # parameters will likely need adjusting for parquet too
         dataframe.to_parquet(byte_stream)
-        dataframe.to_parquet('./files/s3_test.parquet')
+        # dataframe.to_parquet('./files/s3_test.parquet')
 
     return byte_stream

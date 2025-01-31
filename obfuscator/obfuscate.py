@@ -1,4 +1,3 @@
-import pandas as pd
 from read_file import read_file
 from obfuscate_data import obfuscate_data
 from write_to_bytestream import write_to_bytestream
@@ -33,4 +32,4 @@ def obfuscate(s3_location, pii_fields):
         raise e
     
 if __name__ == "__main__":
-    obfuscate('s3://obfuscator/testdata_10students.parquet', ['name', 'email_address'])
+    obfuscate('s3://obfuscator/testdata_10students.json', ['name', 'email_address'])
