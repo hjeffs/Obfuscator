@@ -33,3 +33,8 @@ def mock_write_to_bytestream():
 def test_obfuscate_success(mock_s3_parser, mock_read_file, mock_obfuscate_data, mock_write_to_bytestream):
     byte_stream = obfuscate("s3://bucket/file.csv", ["col1"])
     assert isinstance(byte_stream, io.BytesIO)
+
+def test_obfuscate_empty_pii_fields(mock_s3_parser, mock_read_file, mock_obfuscate_data, mock_write_to_bytestream):
+    byte_stream = obfuscate("s3://bucket/file.csv", [" ", ""])
+    assert isinstance(byte_stream, io.BytesIO)
+
