@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="s3_obfuscator",  # Your package name
+    name="obfuscator",  # Your package name
     version="1.0.0",  # Version number
     author="Harry Jeffs",
     author_email="hjeffs30@gmail.com",
