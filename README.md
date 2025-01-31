@@ -46,6 +46,8 @@ This portfolio project was created to spec for [Tech Returners](https://www.tech
 
 [LinkedIn](https://www.linkedin.com/in/harry-jeffs-195545308/)
 
+Make sure you are signed into your IAM AWS credentials on the device you are using. Help can be found [here](https://docs.aws.amazon.com/cli/v1/userguide/cli-authentication-user.html).
+
 If you have previously installed this package, used it and now it is failing, try:
 
 ```
