@@ -6,6 +6,7 @@ from .s3_parser import s3_parser
 # relative imports required for running as pip package, rather than local
 # remove . before imports if attempting to run locally
 
+
 def obfuscate(s3_location, pii_fields):
     try:
         print("in obfuscate.py")
@@ -25,14 +26,17 @@ def obfuscate(s3_location, pii_fields):
         # Write to bytesteam to return
         byte_stream = write_to_bytestream(dataframe, file_extension)
         byte_stream.seek(0)
-        
+
         print(f'{byte_stream} in obfuscate.py')
         return byte_stream
     except FileNotFoundError:
-        raise FileNotFoundError("Error: Input file not found.", '<<< obfuscate.py error')
+        raise FileNotFoundError("Error: Input file not found.")
     except Exception as e:
         print(f'Error: {e}', '<<< obfuscate.py error')
         raise e
-    
+
+
 if __name__ == "__main__":
-    obfuscate('s3://obfuscator/testdata_10students.json', ['name', 'email_address'])
+    s3_location = 's3://obfuscator/testdata_10students.json'
+    pii_fields = ['name', 'email_address']
+    obfuscate(s3_location, pii_fields)
