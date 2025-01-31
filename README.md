@@ -42,15 +42,18 @@ Manipulate this byte-stream to however you require.
 
 This portfolio project was created to spec for [Tech Returners](https://www.techreturners.com/). 
 
-        Harry Jeffs: Data Engineer
+    Harry Jeffs: Data Engineer
 
 [LinkedIn](https://www.linkedin.com/in/harry-jeffs-195545308/)
 
 If you have previously installed this package, used it and now it is failing, try:
 
-    pip uninstall obfuscator
-
-    pip install git+https://github.com/hjeffs/Obfuscator.git --no-cache-dir
+```
+pip uninstall obfuscator
+```
+```
+pip install git+https://github.com/hjeffs/Obfuscator.git --no-cache-dir
+```
 
 This should remove any cached directories and use the up to date package. 
 
