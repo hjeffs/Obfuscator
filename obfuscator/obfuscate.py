@@ -3,6 +3,9 @@ from .obfuscate_data import obfuscate_data
 from .write_to_bytestream import write_to_bytestream
 from .s3_parser import s3_parser
 
+# relative imports required for running as pip package, rather than local
+# remove . before imports if attempting to run locally
+
 def obfuscate(s3_location, pii_fields):
     try:
         print("in obfuscate.py")
