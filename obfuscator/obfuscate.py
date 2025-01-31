@@ -1,7 +1,7 @@
-from read_file import read_file
-from obfuscate_data import obfuscate_data
-from write_to_bytestream import write_to_bytestream
-from s3_parser import s3_parser
+from .read_file import read_file
+from .obfuscate_data import obfuscate_data
+from .write_to_bytestream import write_to_bytestream
+from .s3_parser import s3_parser
 
 def obfuscate(s3_location, pii_fields):
     try:
