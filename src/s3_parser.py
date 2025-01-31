@@ -30,4 +30,4 @@ def s3_parser(s3_location):
         raise e
     
 if __name__ == '__main__':
-    s3_parser('s3://xno-bazaar-listing-images/testdata_10students.csv')
+    s3_parser('s3://obfuscator/testdata_10students.json')
