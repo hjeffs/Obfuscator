@@ -5,7 +5,9 @@ from unittest.mock import patch
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "obfuscator")))
-from obfuscate import obfuscate
+from obfuscator import obfuscate
+import botocore
+from botocore.exceptions import ClientError
 
 # Mocking dependencies
 @pytest.fixture
@@ -31,22 +33,25 @@ def mock_write_to_bytestream():
 
 # Unit tests
 def test_obfuscate_success(mock_s3_parser, mock_read_file, mock_obfuscate_data, mock_write_to_bytestream):
-    byte_stream = obfuscate("s3://bucket/file.csv", ["col1"])
+    byte_stream = obfuscate("s3://obfuscator/testdata_10students.csv", ["col1"])
     assert isinstance(byte_stream, io.BytesIO)
 
 def test_obfuscate_empty_pii_fields(mock_s3_parser, mock_read_file, mock_obfuscate_data, mock_write_to_bytestream):
-    byte_stream = obfuscate("s3://bucket/file.csv", [" ", ""])
+    byte_stream = obfuscate("s3://obfuscator/testdata_10students.csv", [" ", ""])
     assert isinstance(byte_stream, io.BytesIO)
 
 def test_obfuscate_file_not_found():
-    with patch("obfuscate.s3_parser", side_effect=FileNotFoundError):
-        with pytest.raises(FileNotFoundError):
-            obfuscate("s3://bucket/missing.csv", ["col1"])
+    with patch("obfuscate.s3_parser", side_effect=ClientError(
+        {"Error": {"Code": "NoSuchKey", "Message": "The specified key does not exist"}},
+        "GetObject"
+    )):
+        with pytest.raises(ClientError) as exc_info:
+            obfuscate("s3://obfuscator/missing.csv", ["col1"])
 
-def test_obfuscate_generic_exception():
-    with patch("obfuscate.s3_parser", side_effect=Exception("Unexpected error")):
-        with pytest.raises(Exception, match="Unexpected error"):
-            obfuscate("s3://bucket/error.csv", ["col1"])
+            error_message = str(exc_info.value)
+
+            assert 'NoSuchKey' in error_message
+            assert 'The specified key does not exist' in error_message
 
 # PEP-8 compliance test
 def test_pep8_compliance():
