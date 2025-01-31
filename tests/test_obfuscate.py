@@ -43,3 +43,7 @@ def test_obfuscate_file_not_found():
         with pytest.raises(FileNotFoundError):
             obfuscate("s3://bucket/missing.csv", ["col1"])
 
+def test_obfuscate_generic_exception():
+    with patch("obfuscate.s3_parser", side_effect=Exception("Unexpected error")):
+        with pytest.raises(Exception, match="Unexpected error"):
+            obfuscate("s3://bucket/error.csv", ["col1"])
