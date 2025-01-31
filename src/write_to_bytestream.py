@@ -18,5 +18,6 @@ def write_to_bytestream(dataframe, file_extension):
     elif file_extension == 'parquet':
         # parameters will likely need adjusting for parquet too
         dataframe.to_parquet(byte_stream)
+        dataframe.to_parquet('./files/s3_test.parquet')
 
     return byte_stream

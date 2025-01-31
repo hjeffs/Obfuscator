@@ -1,4 +1,5 @@
 import boto3
+from io import BytesIO
 
 # client to be done as anonymous
 #from botocore import UNSIGNED
@@ -19,7 +20,12 @@ def s3_parser(s3_location):
     
         # Download the file from S3
         s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-        file_content = s3_object['Body'].read().decode('utf-8')
+        
+        if file_extension == 'parquet':
+            file_content = BytesIO(s3_object['Body'].read())
+        else:
+            file_content = s3_object['Body'].read().decode('utf-8')
+
 
         # Return the file content
         # print([file_content, file_extension])

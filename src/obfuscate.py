@@ -33,4 +33,4 @@ def obfuscate(s3_location, pii_fields):
         raise e
     
 if __name__ == "__main__":
-    obfuscate('s3://obfuscator/testdata_10students.json', ['name', 'email_address'])
+    obfuscate('s3://obfuscator/testdata_10students.parquet', ['name', 'email_address'])
