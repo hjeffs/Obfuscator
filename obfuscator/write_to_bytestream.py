@@ -1,7 +1,7 @@
 from io import BytesIO
 
 def write_to_bytestream(dataframe, file_extension):
-    print('in write_to_bytestream.py')
+    # print('in write_to_bytestream.py')
 
     # Create bytestream 
     byte_stream = BytesIO()

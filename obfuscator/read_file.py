@@ -2,7 +2,7 @@ import pandas as pd
 from io import StringIO
 
 def read_file(file_content, file_extension):
-    print('in read_file.py')
+    # print('in read_file.py')
 
     # Elif block to read file type
     if file_extension == 'csv':

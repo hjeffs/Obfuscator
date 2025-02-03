@@ -10,7 +10,7 @@ s3 = boto3.client('s3')
 
 def s3_parser(s3_location):
     try:
-        print('in s3_parser.py')
+        # print('in s3_parser.py')
         # Extract bucket name, file key and extension from S3 location
         s3_parts = s3_location.replace("s3://", "").split("/", 1)
         bucket_name = s3_parts[0]

@@ -9,7 +9,7 @@ from .s3_parser import s3_parser
 
 def obfuscate(s3_location, pii_fields):
     try:
-        print("in obfuscate.py")
+        # print("in obfuscate.py")
         # Parse s3 input
         [file_content, file_extension] = s3_parser(s3_location)
 
@@ -27,7 +27,7 @@ def obfuscate(s3_location, pii_fields):
         byte_stream = write_to_bytestream(dataframe, file_extension)
         byte_stream.seek(0)
 
-        print(f'{byte_stream} in obfuscate.py')
+        # print(f'{byte_stream} in obfuscate.py')
         return byte_stream
     except FileNotFoundError:
         raise FileNotFoundError("Error: Input file not found.")
